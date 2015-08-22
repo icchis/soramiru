@@ -5,26 +5,54 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>Weather7</title>
-    <link rel="stylesheet" href="bower_components/framework7/dist/css/framework7.ios.min.css">
+    <title>SORA☁MIRU｜ソラミル</title>
+    <meta name="description" content="いつでもどこでも使いやすいオシャレ天気予報ウェブアプリSORA☁MIRU｜ソラミル">
+    <meta name="keywords" content="天気予報,SORAMIRU,ソラミル,簡単天気予報">
+    <meta name="author" content="テックロジックス,tech logics">
+    <link rel="canonical" href="http://soramiru.link/">
+    <meta name="copyright" content="© TECH LOGICS" />
+    <meta name="rating" content="general" />
+    <meta name="coverage" content="japan" />
+    <meta name="reply-to" content="techandlogics@gmail.com" />
+
+    <meta property="og:title" content="オシャレ天気予報ウェブアプリSORAMIRU｜ソラミル">
+    <meta property="og:type" content="article">
+    <meta property="og:description" content="いつでもどこでも使いやすい天気予報ウェブアプリSORAMIRU｜ソラミル">
+    <meta property="og:url" content="http://soramiru.link/">
+    <meta property="og:image" content="http://soramiru.link/images/favicon.png">
+    <meta property="og:site_name" content="オシャレ天気予報ウェブアプリSORAMIRU｜ソラミル">
+    <meta property="og:email" content="techandlogics@gmail.com">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="http://soramiru.link/">
+    <meta name="twitter:creator" content="@tech_logics">
+    <meta name="twitter:title" content="天気予報ウェブサービスSORA☁MIRU｜ソラミル">
+    <meta name="twitter:description" content="いつでもどこでも使いやすいオシャレ天気予報ウェブアプリSORA☁MIRU｜ソラミル">
+    <meta name="twitter:image:src" content="http://soramiru.link/images/favicon.png">
+
+    <link href='http://fonts.googleapis.com/css?family=Bad+Script' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Josefin+Slab:400,600,700' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Codystar' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="bower_components/framework7/dist/css/framework7.ios.css">
     <link rel="stylesheet" href="bower_components/framework7/dist/css/framework7.ios.colors.min.css">
-    <link rel="stylesheet" href="css/weather7.css">
+    <link rel="stylesheet" href="css/ionicons.css">
+    <link rel="stylesheet" href="css/soramiru.css">
     <!-- Favicon-->
-    <link href="img/icon-57.png" rel="shortcut icon"> 
+    <link href="img/favicon.png" rel="shortcut icon"> 
     <!-- iOS 7 iPad (retina) -->
-    <link href="img/icon-152.png" sizes="152x152" rel="apple-touch-icon">
+    <link href="img/favicon.png" sizes="152x152" rel="apple-touch-icon">
     <!-- iOS 6 iPad (retina) -->
-    <link href="img/icon-144.png" sizes="144x144" rel="apple-touch-icon">
+    <link href="img/favicon.png" sizes="144x144" rel="apple-touch-icon">
     <!-- iOS 7 iPhone (retina) -->
-    <link href="img/icon-120.png" sizes="120x120" rel="apple-touch-icon">
+    <link href="img/favicon.png" sizes="120x120" rel="apple-touch-icon">
     <!-- iOS 6 iPhone (retina) -->
-    <link href="img/icon-114.png" sizes="114x114" rel="apple-touch-icon">
+    <link href="img/favicon.png" sizes="114x114" rel="apple-touch-icon">
     <!-- iOS 7 iPad -->
-    <link href="img/icon-76.png" sizes="76x76" rel="apple-touch-icon">
+    <link href="img/favicon.png" sizes="76x76" rel="apple-touch-icon">
     <!-- iOS 6 iPad -->
-    <link href="img/icon-72.png" sizes="72x72" rel="apple-touch-icon">
+    <link href="img/favicon.png" sizes="72x72" rel="apple-touch-icon">
     <!-- iOS 6 iPhone -->
-    <link href="img/icon-57.png" sizes="57x57" rel="apple-touch-icon">
+    <link href="img/favicon.png" sizes="57x57" rel="apple-touch-icon">
   </head>
   <body>
     <!-- Statusbar overlay-->
@@ -34,16 +62,21 @@
       <div class="view view-main navbar-through">
         <div class="navbar">
           <div class="navbar-inner">
-            <div class="center sliding"><span class="navbar-logo"></span></div>
-            <div class="right"><a href="#" class="open-popup link icon-only"><i class="icon icon-plus">+</i></a></div>
+            <div class="left"><a href="#" class="open-info link icon-only"><i class="icon icon-plus ion ion-ios-cog-outline"></i></a></div>
+            <h1><div class="center sliding"><span class="navbar-logo">SORA☁MIRU</span></div></h1>
+            <div class="right"><a href="#" data-popup=".popup-search" class="open-popup link icon-only"><i class="icon icon-plus ion ion-ios-plus-outline"></i></a></div>
           </div>
         </div>
         <div class="pages">
+          <div id="particles-js"></div>
           <div data-page="index" class="page">
-            <div class="page-content">
+            <div class="page-content pull-to-refresh-content">
+              <div class="pull-to-refresh-layer">
+                <div class="preloader"></div>
+                <div class="pull-to-refresh-arrow"></div>
+              </div>
               <div class="list-block places-list">
                 <ul></ul>
-                <div class="list-block-label"><img src="img/yahoo-logo.png" height="20"></div>
               </div>
             </div>
           </div>
@@ -51,7 +84,7 @@
       </div>
     </div>
     <!-- Search popup-->
-    <div class="popup">
+    <div class="popup popup-search">
       <div class="view navbar-fixed">
         <div class="navbar">
           <div class="navbar-inner">
@@ -71,6 +104,22 @@
         </div>
       </div>
     </div>
+    <!-- Search popup-->
+    <!-- <div class="popup popup-info">
+      <div class="view navbar-fixed">
+        <div class="navbar">
+          <div class="navbar-inner">
+            <div class="right"><a href="#" class="link close-popup">✗</a></div>
+          </div>
+        </div>
+        <div class="pages">
+          <div class="page">
+            <div class="page-content">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div> -->
     <!-- Templates-->
     <script id="search-results-template" type="text/template">
       {{#each this}}
@@ -94,7 +143,7 @@
     <script id="details-template" type="text/template">
       <div class="navbar">
         <div class="navbar-inner">
-          <div class="left sliding"><a href="index.html" class="back link"><span class="navbar-logo"></span></a></div>
+          <div class="left sliding"><a href="index.html" class="back link"><span class="navbar-logo">← BACK</span></a></div>
         </div>
       </div>
       <div class="pages navbar-through">
@@ -117,9 +166,36 @@
         </div>
       </div>
     </script>
+    <script id="info-template" type="text/template">
+      <div class="navbar">
+        <div class="navbar-inner">
+          <div class="left sliding"><a href="index.html" class="back link"><span class="navbar-logo">← BACK</span></a></div>
+        </div>
+      </div>
+      <div class="pages navbar-through">
+        <div data-page="detail" class="page info">
+          <div class="page-content">
+            <h2>USAGE</h2>
+            <video controls>
+               <source src="img/soramiru.mp4" type="video/mp4">
+               <p>※ご利用のブラウザでは再生することができません。</p>
+            </video>
+            <h2>Twitter</h2>
+            <p>
+              <img class="icon" src="img/icon.jpg" alt=""/>
+              <a class="href" href="https://twitter.com/hey_icchiman" target="_blank">@Hey_icchiman</a></p>
+            <h2>HP</h2>
+            <p><a class="href" href="http:/\/icchis.github.io" target="_blank">http:/\/icchis.github.io</a></p></p>
+            <p class="last">Special thanks for you</p>
+          </div>
+        </div>
+      </div>
+    </script>
     <!-- Path to Framework7 Library JS-->
     <script type="text/javascript" src="bower_components/framework7/dist/js/framework7.min.js"></script>
     <!-- Path to your app js-->
-    <script type="text/javascript" src="js/weather7.js"></script>
+    <script type="text/javascript" src="js/particles.js"></script>
+    <script type="text/javascript" src="js/particles-main.js"></script>
+    <script type="text/javascript" src="js/soramiru.js"></script>
   </body>
 </html>

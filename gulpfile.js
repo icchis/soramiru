@@ -4,7 +4,6 @@
         connect = require('gulp-connect'),
         open = require('gulp-open'),
         less = require('gulp-less'),
-        jade = require('gulp-jade'),
         path = require('path'),
         fs = require('fs'),
         paths = {
@@ -12,12 +11,11 @@
             css: 'css/',
             js: 'js/',
             source: {
-                less: 'src/less/',
-                jade: 'src/jade/'
+                less: 'src/less/'
             }
         },
         app = {
-            filename: 'weather7',
+            filename: 'soramiru',
             pkg: require('./bower.json'),
             banner: [
                 '/**',
@@ -57,7 +55,7 @@
                 cb();
             });
     });
-    gulp.task('jade', function (cb) {
+    /*gulp.task('jade', function (cb) {
         gulp.src([paths.source.jade + '*.jade'])
             .pipe(jade({
                 pretty: true,
@@ -67,18 +65,18 @@
             .on('end', function () {
                 cb();
             });
-    });
+    });*/
 
-    gulp.task('build', ['styles', 'jade'], function (cb) {
+    /*gulp.task('build', ['styles', 'jade'], function (cb) {
         cb();
-    });
+    });*/
 
     /* =================================
     Watch
     ================================= */
     gulp.task('watch', function () {
         gulp.watch(paths.source.less + '*.less', [ 'styles' ]);
-        gulp.watch(paths.source.jade + '*.jade', [ 'jade' ]);
+        //gulp.watch(paths.source.jade + '*.jade', [ 'jade' ]);
 
         gulp.watch(paths.css + '*.css', function () {
             gulp.src(paths.css)

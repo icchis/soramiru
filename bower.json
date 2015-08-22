@@ -1,10 +1,6 @@
 {
-  "name": "Weather7",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/nolimits4web/Weather7.git"
-  },
-  "description": "Framework7 weather demo app",
+  "name": "SORAMIRU",
+  "description": "soramiru",
   "version": "1.0.0",
   "author": "Vladimir Kharlampidi",
   "homepage": "http://www.idangero.us/framework7",

@@ -1,6 +1,6 @@
 // Initialize your app
 var myApp = new Framework7({
-    modalTitle: 'weather7'
+    modalTitle: 'SORA☁MIRU'
 });
 // Export selectors engine
 var $$ = Dom7;
@@ -15,6 +15,7 @@ Template7.registerHelper('dayOfWeek', function (date) {
 myApp.searchResultsTemplate = Template7.compile($$('#search-results-template').html());
 myApp.homeItemsTemplate = Template7.compile($$('#home-items-template').html());
 myApp.detailsTemplate = Template7.compile($$('#details-template').html());
+myApp.infoTemplate = Template7.compile($$('#info-template').html());
 
 // Add view
 var mainView = myApp.addView('.view-main', {
@@ -194,6 +195,18 @@ $$('.places-list').on('click', 'a.item-link', function (e) {
     var pageContent = myApp.detailsTemplate(item);
     mainView.loadContent(pageContent);
 });
+// Build details page
+$$('.navbar').on('click', '.open-info', function (e) {
+    var pageContent = myApp.infoTemplate();
+    mainView.loadContent(pageContent);
+});
+$$('body').on('click', '.href', function (e) {
+    console.log('test');
+    var href = $$(this).attr('href');
+    console.log(href);
+    // location.href();
+    window.open(href, '_blank');
+});
 
 // Update app when manifest updated 
 // http://www.html5rocks.com/en/tutorials/appcache/beginner/
@@ -210,3 +223,14 @@ window.addEventListener('load', function (e) {
         }
     }, false);
 }, false);
+
+// Pull to refresh content
+var ptrContent = $$('.pull-to-refresh-content');
+ 
+// Add 'refresh' listener on it
+ptrContent.on('refresh', function (e) {
+    // Emulate 2s loading
+    setTimeout(function () {
+        myApp.pullToRefreshDone();
+    }, 1000);
+});

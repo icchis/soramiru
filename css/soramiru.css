@@ -3,6 +3,7 @@ body {
   overflow: hidden;
   height: 100%;
   width: 100%;
+  font-family: 'Bad Script', cursive;
 }
 body {
   background: #000;
@@ -36,13 +37,16 @@ body {
 ==============================*/
 .pages {
   background: #000;
+  font-family: 'Codystar', cursive;
+  z-index: 5999;
+  opacity: 1;
 }
 .page[data-page="index"],
 .page[data-page="detail"] {
   background: none;
-  background: #000000 url(../img/bg.jpg) no-repeat center;
-  -webkit-background-size: cover;
-  background-size: cover;
+}
+.page {
+  z-index: 7000;
 }
 /* iOS over scrolling fix */
 html.ios .page {
@@ -56,22 +60,45 @@ html.ios .page-content {
     Navbar
 ==============================*/
 .navbar {
-  background: #2b1127;
+  background: #0CBFB8;
   color: #fff;
+  z-index: 6000;
 }
 .navbar:after {
   display: none;
 }
 span.navbar-logo {
-  width: 100px;
-  height: 25px;
-  background: url(../img/logo.png) no-repeat center;
-  -webkit-background-size: 100% auto;
-  background-size: 100% auto;
+  width: 200px;
+  height: 40px;
+  font-size: 1.4rem;
+  letter-spacing: 1px;
+  font-family: 'Bad Script', cursive;
   display: block;
 }
 i.icon-plus {
   color: #fff;
+  margin-top: -0.3rem;
+}
+.back .navbar-logo {
+  font-size: 1.1rem;
+  color: #fff;
+}
+.page-content {
+  text-shadow: 0 0 3px #ffffff;
+}
+/*==============================
+    particles
+==============================*/
+#particles-js {
+  position: absolute;
+  z-index: 5001;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #000000 url(../img/winter.jpg) no-repeat center;
+  -webkit-background-size: cover;
+  background-size: cover;
 }
 /*==============================
     Homepage places list
@@ -207,6 +234,9 @@ i.icon-plus {
 ==============================*/
 .page[data-page="detail"] {
   color: #fff;
+  z-index: 8000;
+  -webkit-transition: all .25s ease;
+  transition: all .25s ease;
 }
 .detail-city {
   margin-top: 20px;
@@ -234,7 +264,7 @@ i.icon-plus {
   }
 }
 .list-block.forecast-list ul {
-  background: rgba(0, 0, 0, 0.2);
+  background: rgba(0, 0, 0, 0.4);
 }
 .list-block.forecast-list ul:before,
 .list-block.forecast-list ul:after {
@@ -261,6 +291,39 @@ i.icon-plus {
 }
 .list-block.forecast-list span.temps span.high {
   color: #fff;
+}
+.list-block.forecast-list span.temps .low {
+  color: rgba(255, 255, 255, 0.4);
+}
+/*==============================
+    info-template
+==============================*/
+.info {
+  text-align: center;
+}
+.info h2 {
+  margin: 2rem 0 0;
+}
+.info a {
+  color: rgba(255, 255, 255, 0.9);
+  border-bottom: 1px dotted rgba(255, 255, 255, 0.9);
+}
+.info video {
+  width: 80%;
+  height: auto;
+  margin: 0.5rem auto 0;
+}
+.info .icon {
+  width: 6rem;
+  border-radius: 50%;
+  margin: 0 auto 0.5rem;
+  display: block;
+  opacity: 0.9;
+  box-shadow: 0 0 3px rgba(255, 255, 255, 0.9);
+}
+.info .last {
+  margin: 3rem 0;
+  font-size: 1.5rem;
 }
 /*==============================
     Styles for case with statusbar overlay
